@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Hey! Welcome to C5 Project
         </a>
       </header>
     </div>
