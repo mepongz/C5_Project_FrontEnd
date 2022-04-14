@@ -1,24 +1,33 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+
+import {
+  BrowserRouter as Router,
+  useRoutes
+} from 'react-router-dom'
+
+import Players from './app/pages/Players'
+
+
+const Routes = () => {
+  const element = useRoutes([
+    {
+      path: "/",
+      element: <Players />,
+    },
+    
+  ]);
+
+  return element
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Hey! Welcome to C5 Project
-        </a>
-      </header>
-    </div>
+    <Router>
+       <div className="App">
+          <Routes />
+      </div>
+    </Router>
   );
 }
 
