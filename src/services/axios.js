@@ -9,5 +9,13 @@ const api = axios.create({
 	}
 })
 
+export const apiUrlEncodedContentType = axios.create({
+	baseURL: `${process.env.REACT_APP_API_SERVER}`,
+	headers: {
+		"Content-type": "application/x-www-form-urlencoded"
+	}
+})
+
+
 
 export default api

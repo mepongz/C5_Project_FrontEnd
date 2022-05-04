@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { playerSelector } from './selectors'
 import {getPlayers} from './slice'
+import { useNavigate } from "react-router-dom";
 
 import { Grid, Button, Box, Typography, Link, TextField, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
@@ -11,7 +12,8 @@ const Players = () => {
     const [search, setSearch] = useState('')
     const [sortBy, setSortBy] = useState('asc')
     const [sortColumn, setSortColumn] = useState('last_name')
-    
+    const navigate = useNavigate()
+
     const RenderedPlayers = () => {
         return (
             <>
@@ -33,7 +35,7 @@ const Players = () => {
                                 <Typography variant="h6">Height: {player?.height}</Typography>
                                 <Typography variant="h6">Team: <Link>{player?.team?.name} </Link></Typography>
                                 <Grid style={{padding: 10}}>
-                                    <Button variant="outlined">Edit</Button>
+                                    <Button variant="outlined" onClick={()=>navigate(`/edit/${player?.id}`, { state: {player}})}>Edit</Button>
                                     <Button variant="contained" color="error" style={{marginLeft: 10}}>DELETE</Button>
                                 </Grid>
                             </Grid>
@@ -50,7 +52,9 @@ const Players = () => {
         dispatch({
             type: getPlayers.type,
             payload: {
-                search: ''
+                search: search ?? '',
+                sort_by: sortBy,
+                sort_column: sortColumn,
             }
         })
     },[])
@@ -60,7 +64,9 @@ const Players = () => {
         dispatch({
             type: getPlayers.type,
             payload: {
-                search: search ?? ''
+                search: search ?? '',
+                sort_by: sortBy,
+                sort_column: sortColumn,
             }
         })
     }
@@ -69,7 +75,7 @@ const Players = () => {
         <>
             <Grid container>
                 <Grid item xs={12} style={{padding: '20px', textAlign: 'center'}}>
-                    <Typography variant="h3"> Welcome to NBA Stars <Button variant="contained" color="success">Add new star</Button></Typography>
+                    <Typography variant="h3"> Welcome to NBA Stars <Button variant="contained" color="success" onClick={()=> navigate('/add')}>Add new star</Button></Typography>
                 </Grid>
                 <Grid item xs={12}>
                     <Box
