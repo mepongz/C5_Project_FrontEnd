@@ -28,8 +28,8 @@ const Players = () => {
                                 </Box>
                             </Grid>
                             <Grid item xs={8} style={{textAlign: 'left'}} padding={5}>
-                                <Typography variant="h6">Firstname: {player?.first_name}</Typography>
-                                <Typography variant="h6">Lastname: {player?.last_name}</Typography>
+                                <Typography variant="h6">FirstName: {player?.first_name}</Typography>
+                                <Typography variant="h6">LastName: {player?.last_name}</Typography>
                                 <Typography variant="h6">Position: {player?.position}</Typography>
                                 <Typography variant="h6">Age: {player?.age}</Typography>
                                 <Typography variant="h6">Height: {player?.height}</Typography>
